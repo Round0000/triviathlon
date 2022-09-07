@@ -1,0 +1,76 @@
+<div class="container" [attr.data-type]="game.type" *ngIf="game.type === 'qcm'">
+  <div class="game" @gamePhaseTrigger *ngIf="game.phase !== 'over'">
+    <h1>Vitesse</h1>
+
+    <app-counters [game]="game"></app-counters>
+
+    <!-- game ready -->
+    <div class="card" *ngIf="game.phase === 'ready'" >
+      <button id="btnStartGame" (click)="startGame()">Jouer</button>
+    </div>
+
+    <!-- game running -->
+    <div class="card" *ngIf="game.phase === 'running'" @gamePhaseTrigger>
+      <div class="card-header">
+        <span class="question-category">{{ game.currentQuestion.category }}</span>
+        <span class="question-count"
+          >{{ game.currentQuestionIndex + 1 }}</span
+        >
+      </div>
+      <p class="question">{{ game.currentQuestion.question }}</p>
+      <ul class="answers_list">
+        <li
+          class="answers_item"
+          #element
+          *ngFor="let option of game.currentQuestion.options"
+          (click)="tryAnswer(option)"
+        >
+          {{ option }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- game over -->
+  <div class="game-over" @gamePhaseTrigger *ngIf="game.phase === 'over'">
+    <span class="score">Score : {{ game.score }}</span>
+  </div>
+</div>
+<div class="container" [attr.data-type]="game.type" *ngIf="game.type === 'pictures'">
+  <div class="game" @gamePhaseTrigger *ngIf="game.phase !== 'over'">
+    <h1>Images</h1>
+
+    <app-counters [game]="game"></app-counters>
+
+    <!-- game ready -->
+    <div class="card" *ngIf="game.phase === 'ready'" >
+      <button id="btnStartGame" (click)="startGame()">Jouer</button>
+    </div>
+
+    <!-- game running -->
+    <div class="card" *ngIf="game.phase === 'running'" @gamePhaseTrigger>
+      <div class="card-header">
+        <span class="question-category">{{ game.currentQuestion.category }}</span>
+        <span class="question-count"
+          >{{ game.currentQuestionIndex + 1 }}</span
+        >
+      </div>
+      <p class="question">{{ game.currentQuestion.question }}</p>
+      <ul class="answers_list">
+        <li
+          class="answers_item"
+          #element
+          *ngFor="let option of game.currentQuestion.options"
+          (click)="tryAnswer(option)"
+        >
+          <img [attr.src]="option" alt="">
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- game over -->
+  <div class="game-over" @gamePhaseTrigger *ngIf="game.phase === 'over'">
+    <span class="score">Score : {{ game.score }}</span>
+  </div>
+</div>

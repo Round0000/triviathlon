@@ -1,0 +1,20 @@
+<div class="counters">
+  <div
+    class="clock"
+    [ngStyle]="{ width: (game.timer / 3000) * 100 + '%' }"
+  ></div>
+
+  <div class="score">
+    <span *ngIf="game.combo >= 3">🔥</span>
+    <span [ngStyle]="{ color: game.combo >= 3 ? 'orange' : '' }">{{ game.score }}</span>
+    <span *ngIf="game.combo >= 3">🔥</span>
+  </div>
+  <div class="answered">
+    <div
+      @answerAddedTrigger
+      class="answer"
+      *ngFor="let element of game.answered"
+      [attr.data-correct]="element"
+    ></div>
+  </div>
+</div>

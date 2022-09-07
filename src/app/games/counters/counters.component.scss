@@ -1,0 +1,45 @@
+.counters {
+  outline: 1px solid #fff;
+  width: 90%;
+  margin: auto;
+
+  .clock {
+    width: 100%;
+    background-color: #bae6fd;
+    height: 0.5em;
+  }
+
+  .score {
+    background-color: #111;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      min-width: 2em;
+      height: 1.5em;
+      line-height: 1.5;
+    }
+  }
+
+  .answered {
+    display: flex;
+    height: 1em;
+    outline: 1px solid #fff;
+
+    .answer {
+      flex: 1;
+      border: 2px solid #333;
+
+      &[data-correct="true"] {
+        background-color: #bef264;
+      }
+      &[data-correct="false"] {
+        background-color: #fca5a5;
+      }
+    }
+  }
+}

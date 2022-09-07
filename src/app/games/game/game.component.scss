@@ -7,6 +7,7 @@
   padding: 0.5em;
   height: 92.8vh;
   display: grid;
+  grid-template-rows: 1fr;
 
   > div {
     grid-column: 1;
@@ -14,6 +15,62 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  &[data-type="qcm"] {
+    .answers_list {
+      background-color: #bae6fd;
+      padding: 0.5em;
+      padding-top: 2em;
+      margin: 0.5em;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+
+      .answers_item {
+        border: 1px solid #0005;
+        padding: 0.75em 1em;
+        text-align: center;
+        margin: 1em 0.5em;
+        background-color: #fafafa;
+        border-radius: 8px;
+        box-shadow: 1px 1px 2px #0005;
+        font-size: 1.2rem;
+        text-shadow: 1px 1px 2px #fafafa55;
+        line-height: 1;
+      }
+    }
+  }
+
+  &[data-type="pictures"] {
+    .answers_list {
+      background-color: #bae6fd;
+      padding: 0.5em;
+      padding-top: 2em;
+      margin: 0.5em;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 25vh 25vh;
+
+      .answers_item {
+        border: 1px solid #0005;
+        padding: 0.25em;
+        margin: .5em;
+        background-color: #fafafa;
+        border-radius: 8px;
+        box-shadow: 1px 1px 2px #0005;
+        font-size: 1.2rem;
+
+        img {
+          display: block;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
   }
 }
 
@@ -28,43 +85,6 @@ h1 {
   text-align: center;
   font-weight: 300;
   margin: 1em;
-}
-
-.counters {
-  outline: 1px solid #fff;
-  width: 90%;
-  margin: auto;
-
-  .clock {
-    width: 100%;
-    background-color: #bae6fd;
-    height: 0.5em;
-  }
-
-  .score {
-    background-color: #111;
-    text-align: center;
-    color: #fff;
-    font-size: 1.5rem;
-  }
-
-  .answered {
-    display: flex;
-    height: 1em;
-    outline: 1px solid #fff;
-
-    .answer {
-      flex: 1;
-      border: 2px solid #333;
-
-      &[data-correct="true"] {
-        background-color: #bef264;
-      }
-      &[data-correct="false"] {
-        background-color: #fca5a5;
-      }
-    }
-  }
 }
 
 .card {
@@ -84,7 +104,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all .2s;
+    transition: all 0.2s;
     outline-offset: 8px;
     outline: 2px solid transparent;
 
@@ -125,27 +145,5 @@ h1 {
     border: 2px solid #0005;
     border-top: none;
     border-radius: 6px;
-  }
-
-  .answers_list {
-    background-color: #bae6fd;
-    padding: 0.5em;
-    padding-top: 2em;
-    margin: 0.5em;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-
-    .answers_item {
-      border: 1px solid #0005;
-      padding: 0.75em 1em;
-      text-align: center;
-      margin: 1em 0.5em;
-      background-color: #fafafa;
-      border-radius: 8px;
-      box-shadow: 1px 1px 2px #0005;
-      font-size: 1.2rem;
-      text-shadow: 1px 1px 2px #fafafa55;
-      line-height: 1;
-    }
   }
 }
